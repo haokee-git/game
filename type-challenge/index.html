@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Type Challenge: Haokee's Survival</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
+
+    body {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    .text-shadow {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body class="bg-blue-900 overflow-hidden h-screen w-screen relative select-none">
+
+  <!-- Game Canvas -->
+  <canvas id="gameCanvas" class="absolute inset-0 z-0"></canvas>
+
+  <!-- UI Overlay -->
+  <div id="ui-layer" class="absolute inset-0 z-10 pointer-events-none flex flex-col justify-between p-6">
+    <div class="flex justify-between items-start text-white">
+      <div>
+        <h1 class="text-2xl font-bold bg-black/30 px-4 py-2 rounded-lg backdrop-blur-sm">SCORE: <span
+            id="scoreDisplay">0</span></h1>
+        <h2 class="text-xl mt-2 bg-black/30 px-4 py-2 rounded-lg backdrop-blur-sm w-fit">WAVE: <span
+            id="waveDisplay">1</span></h2>
+      </div>
+      <div class="flex flex-col items-end">
+        <!-- Combo or specialized UI -->
+        <div id="input-display"
+          class="text-4xl font-black text-yellow-400 tracking-widest uppercase text-shadow transition-all"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start Screen -->
+  <div id="start-screen"
+    class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm">
+    <div class="text-center animate-bounce">
+      <h1
+        class="text-8xl font-black text-white mb-4 text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 to-blue-600 drop-shadow-lg">
+        TYPE CHALLENGE</h1>
+      <p class="text-2xl text-blue-200 mb-8 font-light">Help Haokee survive the fish swarm!</p>
+    </div>
+    <button id="start-btn"
+      class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-black font-black text-2xl px-12 py-4 rounded-full transform hover:scale-110 transition shadow-[0_0_20px_rgba(255,200,0,0.5)]">
+      START GAME
+    </button>
+    <p class="mt-4 text-gray-400 text-sm">Type the words on the fish to shoot them. Don't let them touch you!</p>
+  </div>
+
+  <!-- Game Over Screen -->
+  <div id="game-over-screen"
+    class="hidden absolute inset-0 z-50 flex flex-col items-center justify-center bg-red-900/80 backdrop-blur-md">
+    <h2 class="text-7xl font-black text-white mb-2">GAME OVER</h2>
+    <p class="text-3xl text-red-200 mb-8">Score: <span id="final-score">0</span></p>
+    <button onclick="location.reload()"
+      class="bg-white text-red-900 font-bold text-xl px-8 py-3 rounded-lg hover:bg-gray-200 transition">TRY
+      AGAIN</button>
+  </div>
+
+  <script src="./js/game_bundle.js"></script>
+</body>
+
+</html>
